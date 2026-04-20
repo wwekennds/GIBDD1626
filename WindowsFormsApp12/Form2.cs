@@ -50,5 +50,11 @@ namespace WindowsFormsApp12
             FormCreateVehicle formCreateVehicle = new FormCreateVehicle();
             formCreateVehicle.Show();
         }
+
+        private void btnFine_Click(object sender, EventArgs e)
+        {
+            FinesForm formFine = new FinesForm();
+            formFine.Show();
+        }
     }
 }

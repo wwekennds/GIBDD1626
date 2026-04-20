@@ -52,6 +52,7 @@
             this.btnFine.TabIndex = 2;
             this.btnFine.Text = "Штрафы";
             this.btnFine.UseVisualStyleBackColor = true;
+            this.btnFine.Click += new System.EventHandler(this.btnFine_Click);
             // 
             // btnCreateDriver
             // 
