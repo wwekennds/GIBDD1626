@@ -177,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Driver.cs" />
+    <Compile Include="FineExportRecord.cs" />
     <Compile Include="FinesForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -45,7 +45,11 @@ namespace WindowsFormsApp12
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                var result = MessageBox.Show("Вы действительно хотите удалить водителя?","Удаление водителя",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                var result = MessageBox.Show(
+                    "Вы действительно хотите удалить водителя, его автомобили и связанные с ними штрафы?",
+                    "Удаление водителя",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -97,21 +101,77 @@ namespace WindowsFormsApp12
 
         private void DeleteDriver()
         {
-            using (var connection = new SqlConnection())
-            {
-                connection.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;
-         Initial Catalog=gibddDB;
-         Integrated Security=SSPI;";
-                connection.Open();
+            var driverId = (Guid)dataGridView1.SelectedRows[0].Cells["idDataGridViewTextBoxColumn"].Value;
 
-                using (var command = new SqlCommand("DELETE FROM Clients WHERE Id = @DriverId", connection))
+            using (var connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;
+         Initial Catalog=gibddDB;
+         Integrated Security=SSPI;"))
+            {
+                try
                 {
-                    command.Parameters.AddWithValue("@DriverId", dataGridView1.SelectedRows[0].Cells["idDataGridViewTextBoxColumn"].Value);
-                    command.ExecuteNonQuery();
+                    connection.Open();
+                    using (var transaction = connection.BeginTransaction())
+                    {
+                        using (var command = new SqlCommand(
+                            "DELETE FROM Fines WHERE VehicleId IN (SELECT Id FROM Vehicles WHERE ClientId = @DriverId)",
+                            connection,
+                            transaction))
+                        {
+                            command.Parameters.Add("@DriverId", SqlDbType.UniqueIdentifier).Value = driverId;
+                            command.ExecuteNonQuery();
+                        }
+
+                        using (var command = new SqlCommand(
+                            "DELETE FROM Vehicles WHERE ClientId = @DriverId",
+                            connection,
+                            transaction))
+                        {
+                            command.Parameters.Add("@DriverId", SqlDbType.UniqueIdentifier).Value = driverId;
+                            command.ExecuteNonQuery();
+                        }
+
+                        using (var command = new SqlCommand(
+                            "DELETE FROM Clients WHERE Id = @DriverId",
+                            connection,
+                            transaction))
+                        {
+                            command.Parameters.Add("@DriverId", SqlDbType.UniqueIdentifier).Value = driverId;
+                            if (command.ExecuteNonQuery() != 1)
+                            {
+                                transaction.Rollback();
+                                MessageBox.Show(
+                                    "Водитель не найден. Возможно, запись уже была удалена.",
+                                    "Удаление невозможно",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                                return;
+                            }
+                        }
+
+                        transaction.Commit();
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    if (ex.Number == 547)
+                    {
+                        MessageBox.Show(
+                            "Нельзя удалить водителя, пока с его автомобилями связаны записи в других таблицах.",
+                            "Удаление невозможно",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Не удалось удалить водителя: {ex.Message}", "Ошибка базы данных", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    return;
                 }
             }
 
             MessageBox.Show("Водитель успешно удален.");
+            this.clientsTableAdapter.Fill(this.gibddDBDataSet.Clients);
         }
 
         

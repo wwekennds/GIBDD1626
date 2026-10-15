@@ -151,7 +151,7 @@ namespace WindowsFormsApp12
 
             if (!match.Success)
             {
-                errorProvider1.SetError(txtManualNumber, "Неверный формат. Пример: А123БВ777. Только буквы А,В,Е,К,М,Н,О,Р,С,Т,У,Х");
+                errorProvider1.SetError(txtManualNumber, "Неверный формат. Пример: А123ВЕ777. Только буквы А,В,Е,К,М,Н,О,Р,С,Т,У,Х");
                 return false;
             }
 
@@ -248,14 +248,18 @@ namespace WindowsFormsApp12
         {
             foreach (DataGridViewRow row in dgvFines.Rows)
             {
-                var v = (ViolationDto)row.DataBoundItem;
-                if (!v.IsProcessed)
+                var v = row.DataBoundItem as ViolationDto;
+                if (v != null && !v.IsProcessed)
                 {
                     row.Selected = true;
                     dgvFines.FirstDisplayedScrollingRowIndex = row.Index;
                     return;
                 }
             }
+
+            dgvFines.ClearSelection();
+            label1.Text = "Все штрафы обработаны.";
+            txtManualNumber.Clear();
         }
 
         

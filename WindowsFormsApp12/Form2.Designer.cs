@@ -32,13 +32,14 @@
             this.btnFine = new System.Windows.Forms.Button();
             this.btnCreateDriver = new System.Windows.Forms.Button();
             this.btnCreateVehicle = new System.Windows.Forms.Button();
+            this.btnExportCSV = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCards
             // 
-            this.btnCards.Location = new System.Drawing.Point(363, 196);
+            this.btnCards.Location = new System.Drawing.Point(252, 187);
             this.btnCards.Name = "btnCards";
-            this.btnCards.Size = new System.Drawing.Size(75, 23);
+            this.btnCards.Size = new System.Drawing.Size(82, 40);
             this.btnCards.TabIndex = 1;
             this.btnCards.Text = "Карточки";
             this.btnCards.UseVisualStyleBackColor = true;
@@ -46,9 +47,9 @@
             // 
             // btnFine
             // 
-            this.btnFine.Location = new System.Drawing.Point(537, 196);
+            this.btnFine.Location = new System.Drawing.Point(387, 187);
             this.btnFine.Name = "btnFine";
-            this.btnFine.Size = new System.Drawing.Size(75, 23);
+            this.btnFine.Size = new System.Drawing.Size(82, 40);
             this.btnFine.TabIndex = 2;
             this.btnFine.Text = "Штрафы";
             this.btnFine.UseVisualStyleBackColor = true;
@@ -56,7 +57,7 @@
             // 
             // btnCreateDriver
             // 
-            this.btnCreateDriver.Location = new System.Drawing.Point(196, 187);
+            this.btnCreateDriver.Location = new System.Drawing.Point(113, 187);
             this.btnCreateDriver.Name = "btnCreateDriver";
             this.btnCreateDriver.Size = new System.Drawing.Size(84, 40);
             this.btnCreateDriver.TabIndex = 4;
@@ -74,11 +75,22 @@
             this.btnCreateVehicle.UseVisualStyleBackColor = true;
             this.btnCreateVehicle.Click += new System.EventHandler(this.btnCreateVehicle_Click);
             // 
+            // btnExportCSV
+            // 
+            this.btnExportCSV.Location = new System.Drawing.Point(517, 187);
+            this.btnExportCSV.Name = "btnExportCSV";
+            this.btnExportCSV.Size = new System.Drawing.Size(120, 40);
+            this.btnExportCSV.TabIndex = 6;
+            this.btnExportCSV.Text = "Экспорт информации (CSV)";
+            this.btnExportCSV.UseVisualStyleBackColor = true;
+            this.btnExportCSV.Click += new System.EventHandler(this.btnExportCSV_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnExportCSV);
             this.Controls.Add(this.btnCreateVehicle);
             this.Controls.Add(this.btnCreateDriver);
             this.Controls.Add(this.btnFine);
@@ -96,5 +108,6 @@
         private System.Windows.Forms.Button btnFine;
         private System.Windows.Forms.Button btnCreateDriver;
         private System.Windows.Forms.Button btnCreateVehicle;
+        private System.Windows.Forms.Button btnExportCSV;
     }
 }

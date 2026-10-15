@@ -51,7 +51,7 @@ namespace WindowsFormsApp12
                 return;
             }
 
-            // 2. Имитация проверки пароля (ЗАМЕНИТЕ НА СВОЮ ЛОГИКУ)
+            // 2. Имитация проверки пароля
             string login = textBoxLogin.Text;
             string pass = textBoxPassword.Text;
 
