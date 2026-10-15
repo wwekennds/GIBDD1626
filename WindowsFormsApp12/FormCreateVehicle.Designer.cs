@@ -45,7 +45,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnDeleteCar = new System.Windows.Forms.Button();
+            this.btnChangeCar = new System.Windows.Forms.Button();
+            this.gibddDBDataSet = new WindowsFormsApp12.gibddDBDataSet();
+            this.gibddDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gibddDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gibddDBDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCLient
@@ -68,7 +76,7 @@
             // lblSeries
             // 
             this.lblSeries.AutoSize = true;
-            this.lblSeries.Location = new System.Drawing.Point(27, 81);
+            this.lblSeries.Location = new System.Drawing.Point(27, 71);
             this.lblSeries.Name = "lblSeries";
             this.lblSeries.Size = new System.Drawing.Size(87, 13);
             this.lblSeries.TabIndex = 2;
@@ -77,7 +85,7 @@
             // txtSeries
             // 
             this.txtSeries.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSeries.Location = new System.Drawing.Point(30, 97);
+            this.txtSeries.Location = new System.Drawing.Point(30, 87);
             this.txtSeries.MaxLength = 3;
             this.txtSeries.Name = "txtSeries";
             this.txtSeries.Size = new System.Drawing.Size(100, 20);
@@ -87,7 +95,7 @@
             // lblNumber
             // 
             this.lblNumber.AutoSize = true;
-            this.lblNumber.Location = new System.Drawing.Point(27, 141);
+            this.lblNumber.Location = new System.Drawing.Point(27, 120);
             this.lblNumber.Name = "lblNumber";
             this.lblNumber.Size = new System.Drawing.Size(93, 13);
             this.lblNumber.TabIndex = 4;
@@ -95,7 +103,7 @@
             // 
             // txtNumber
             // 
-            this.txtNumber.Location = new System.Drawing.Point(30, 157);
+            this.txtNumber.Location = new System.Drawing.Point(30, 136);
             this.txtNumber.MaxLength = 3;
             this.txtNumber.Name = "txtNumber";
             this.txtNumber.Size = new System.Drawing.Size(100, 20);
@@ -105,7 +113,7 @@
             // lblRegion
             // 
             this.lblRegion.AutoSize = true;
-            this.lblRegion.Location = new System.Drawing.Point(27, 200);
+            this.lblRegion.Location = new System.Drawing.Point(27, 169);
             this.lblRegion.Name = "lblRegion";
             this.lblRegion.Size = new System.Drawing.Size(70, 13);
             this.lblRegion.TabIndex = 6;
@@ -113,7 +121,7 @@
             // 
             // txtRegion
             // 
-            this.txtRegion.Location = new System.Drawing.Point(30, 216);
+            this.txtRegion.Location = new System.Drawing.Point(30, 185);
             this.txtRegion.MaxLength = 3;
             this.txtRegion.Name = "txtRegion";
             this.txtRegion.Size = new System.Drawing.Size(100, 20);
@@ -123,7 +131,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 255);
+            this.label1.Location = new System.Drawing.Point(27, 224);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 8;
@@ -131,14 +139,14 @@
             // 
             // txtBrand
             // 
-            this.txtBrand.Location = new System.Drawing.Point(30, 272);
+            this.txtBrand.Location = new System.Drawing.Point(30, 241);
             this.txtBrand.Name = "txtBrand";
             this.txtBrand.Size = new System.Drawing.Size(100, 20);
             this.txtBrand.TabIndex = 9;
             // 
             // txtModel
             // 
-            this.txtModel.Location = new System.Drawing.Point(30, 324);
+            this.txtModel.Location = new System.Drawing.Point(30, 293);
             this.txtModel.Name = "txtModel";
             this.txtModel.Size = new System.Drawing.Size(100, 20);
             this.txtModel.TabIndex = 10;
@@ -146,7 +154,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 308);
+            this.label2.Location = new System.Drawing.Point(27, 277);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 11;
@@ -154,7 +162,7 @@
             // 
             // txtVin
             // 
-            this.txtVin.Location = new System.Drawing.Point(30, 380);
+            this.txtVin.Location = new System.Drawing.Point(30, 349);
             this.txtVin.Name = "txtVin";
             this.txtVin.Size = new System.Drawing.Size(100, 20);
             this.txtVin.TabIndex = 13;
@@ -162,7 +170,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(27, 363);
+            this.label4.Location = new System.Drawing.Point(27, 332);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 13);
             this.label4.TabIndex = 12;
@@ -170,9 +178,9 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(689, 392);
+            this.btnSave.Location = new System.Drawing.Point(418, 277);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(99, 46);
+            this.btnSave.Size = new System.Drawing.Size(160, 22);
             this.btnSave.TabIndex = 16;
             this.btnSave.Text = "Сохранить";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -182,11 +190,54 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.DataSource = this.gibddDBDataSetBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(241, 20);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(547, 248);
+            this.dataGridView1.TabIndex = 17;
+            // 
+            // btnDeleteCar
+            // 
+            this.btnDeleteCar.Location = new System.Drawing.Point(689, 277);
+            this.btnDeleteCar.Name = "btnDeleteCar";
+            this.btnDeleteCar.Size = new System.Drawing.Size(99, 22);
+            this.btnDeleteCar.TabIndex = 18;
+            this.btnDeleteCar.Text = "Удалить";
+            this.btnDeleteCar.UseVisualStyleBackColor = true;
+            this.btnDeleteCar.Click += new System.EventHandler(this.btnDeleteCar_Click);
+            // 
+            // btnChangeCar
+            // 
+            this.btnChangeCar.Location = new System.Drawing.Point(584, 277);
+            this.btnChangeCar.Name = "btnChangeCar";
+            this.btnChangeCar.Size = new System.Drawing.Size(99, 22);
+            this.btnChangeCar.TabIndex = 19;
+            this.btnChangeCar.Text = "Изменить";
+            this.btnChangeCar.UseVisualStyleBackColor = true;
+            this.btnChangeCar.Click += new System.EventHandler(this.btnChangeCar_Click);
+            // 
+            // gibddDBDataSet
+            // 
+            this.gibddDBDataSet.DataSetName = "gibddDBDataSet";
+            this.gibddDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // gibddDBDataSetBindingSource
+            // 
+            this.gibddDBDataSetBindingSource.DataSource = this.gibddDBDataSet;
+            this.gibddDBDataSetBindingSource.Position = 0;
+            // 
             // FormCreateVehicle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnChangeCar);
+            this.Controls.Add(this.btnDeleteCar);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtVin);
             this.Controls.Add(this.label4);
@@ -203,9 +254,12 @@
             this.Controls.Add(this.cmbClients);
             this.Controls.Add(this.lblCLient);
             this.Name = "FormCreateVehicle";
-            this.Text = "Создание транспорта";
+            this.Text = "Создание и просмотр данных транспорта";
             this.Load += new System.EventHandler(this.FormCreateVehicle_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gibddDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gibddDBDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,5 +283,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnDeleteCar;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnChangeCar;
+        private System.Windows.Forms.BindingSource gibddDBDataSetBindingSource;
+        private gibddDBDataSet gibddDBDataSet;
     }
 }

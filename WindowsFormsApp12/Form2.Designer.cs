@@ -37,7 +37,7 @@
             // 
             // btnCards
             // 
-            this.btnCards.Location = new System.Drawing.Point(252, 187);
+            this.btnCards.Location = new System.Drawing.Point(287, 31);
             this.btnCards.Name = "btnCards";
             this.btnCards.Size = new System.Drawing.Size(82, 40);
             this.btnCards.TabIndex = 1;
@@ -47,7 +47,7 @@
             // 
             // btnFine
             // 
-            this.btnFine.Location = new System.Drawing.Point(387, 187);
+            this.btnFine.Location = new System.Drawing.Point(422, 31);
             this.btnFine.Name = "btnFine";
             this.btnFine.Size = new System.Drawing.Size(82, 40);
             this.btnFine.TabIndex = 2;
@@ -57,7 +57,7 @@
             // 
             // btnCreateDriver
             // 
-            this.btnCreateDriver.Location = new System.Drawing.Point(113, 187);
+            this.btnCreateDriver.Location = new System.Drawing.Point(148, 31);
             this.btnCreateDriver.Name = "btnCreateDriver";
             this.btnCreateDriver.Size = new System.Drawing.Size(84, 40);
             this.btnCreateDriver.TabIndex = 4;
@@ -67,9 +67,9 @@
             // 
             // btnCreateVehicle
             // 
-            this.btnCreateVehicle.Location = new System.Drawing.Point(335, 300);
+            this.btnCreateVehicle.Location = new System.Drawing.Point(552, 88);
             this.btnCreateVehicle.Name = "btnCreateVehicle";
-            this.btnCreateVehicle.Size = new System.Drawing.Size(123, 23);
+            this.btnCreateVehicle.Size = new System.Drawing.Size(120, 35);
             this.btnCreateVehicle.TabIndex = 5;
             this.btnCreateVehicle.Text = "Создать транспорт";
             this.btnCreateVehicle.UseVisualStyleBackColor = true;
@@ -77,7 +77,7 @@
             // 
             // btnExportCSV
             // 
-            this.btnExportCSV.Location = new System.Drawing.Point(517, 187);
+            this.btnExportCSV.Location = new System.Drawing.Point(552, 31);
             this.btnExportCSV.Name = "btnExportCSV";
             this.btnExportCSV.Size = new System.Drawing.Size(120, 40);
             this.btnExportCSV.TabIndex = 6;
