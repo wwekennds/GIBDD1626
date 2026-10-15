@@ -1,0 +1,38 @@
+[
+  {
+    "ExternalId": "FINE-001",
+    "VehicleNumber": "А231ВК12",
+    "ViolationDate": "2026-04-20T14:30:00",
+    "Article": "12.9 ч.2",
+    "Amount": 500.00,
+    "AccidentTypeRaw": "Столкновение",
+    "Location": "ул. Ленина, д. 10"
+  },
+  {
+    "ExternalId": "FINE-002",
+    "VehicleNumber": "К723РМ351",
+    "ViolationDate": "2026-04-21T09:15:00",
+    "Article": "12.15 ч.4",
+    "Amount": 5000.00,
+    "AccidentTypeRaw": "Наезд на препятствие",
+    "Location": "МКАД, 45-й км"
+  },
+  {
+    "ExternalId": "FINE-003",
+    "VehicleNumber": null,
+    "ViolationDate": "2026-04-21T10:00:00",
+    "Article": "12.12 ч.1",
+    "Amount": 1000.00,
+    "AccidentTypeRaw": "Проезд на красный",
+    "Location": "пер. Кривоколенный, д. 5"
+  },
+  {
+    "ExternalId": "FINE-004",
+    "VehicleNumber": "О482НР721",
+    "ViolationDate": "2026-04-19T18:45:00",
+    "Article": "12.10 ч.1",
+    "Amount": 1500.00,
+    "AccidentTypeRaw": "Иные виды ДТП",
+    "Location": "трасса М-4, 120-й км"
+  }
+]

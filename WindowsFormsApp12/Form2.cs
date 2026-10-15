@@ -220,19 +220,35 @@ ORDER BY c.Surname, c.Name, c.Patromic, f.ViolationDate;";
 
         private static string CreateExportDirectory()
         {
-            string documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string projectDirectory = FindProjectDirectory();
             string baseName = "Экспорт_ФССП_" + DateTime.Now.ToString("yyyyMMdd_HHmmss_fff", CultureInfo.InvariantCulture);
-            string path = Path.Combine(documentsDirectory, baseName);
+            string path = Path.Combine(projectDirectory, baseName);
             int suffix = 1;
 
             while (Directory.Exists(path))
             {
-                path = Path.Combine(documentsDirectory, baseName + "_" + suffix.ToString(CultureInfo.InvariantCulture));
+                path = Path.Combine(projectDirectory, baseName + "_" + suffix.ToString(CultureInfo.InvariantCulture));
                 suffix++;
             }
 
             Directory.CreateDirectory(path);
             return path;
+        }
+
+        private static string FindProjectDirectory()
+        {
+            var directory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+            while (directory != null)
+            {
+                if (directory.GetFiles("*.csproj").Length > 0)
+                {
+                    return directory.FullName;
+                }
+
+                directory = directory.Parent;
+            }
+
+            return AppDomain.CurrentDomain.BaseDirectory;
         }
 
         private static int ExportFinesByDriver(List<FineExportRecord> fines, string outputDirectory)
